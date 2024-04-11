@@ -10,6 +10,8 @@ import UIKit
 final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
+    private var coordinator: AppCoordinator?
+
     func scene(
         _ scene: UIScene,
         willConnectTo session: UISceneSession,
@@ -19,19 +21,10 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             return
         }
 
-        window = UIWindow(windowScene: windowScene)
-
-        let main = MainViewController()
-        let navigation = UINavigationController(rootViewController: main)
-        navigation.tabBarItem.title = "Main"
-        navigation.tabBarItem.image = UIImage(systemName: "newspaper")
-        navigation.tabBarItem.selectedImage = UIImage(systemName: "newspaper.fill")
-
-        let tabBar = UITabBarController()
-        tabBar.setViewControllers([navigation], animated: false)
-
-        window?.rootViewController = tabBar
-        window?.makeKeyAndVisible()
+        let sceneWindow = UIWindow(windowScene: windowScene)
+        window = sceneWindow
+        coordinator = AppCoordinator(window: sceneWindow)
+        coordinator?.start()
     }
 }
 
