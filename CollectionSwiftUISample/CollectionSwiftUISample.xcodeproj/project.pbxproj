@@ -106,7 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				14D90A352BC8412F00EAA120 /* MainModule */,
-				14D90A342BC83CD900EAA120 /* SampleModule */,
+				14D90A342BC83CD900EAA120 /* SampleModuleTCA */,
 				14D90A3B2BC843E600EAA120 /* AppCoordinator.swift */,
 				14D909FD2BC82F1B00EAA120 /* AppDelegate.swift */,
 				14D909FF2BC82F1B00EAA120 /* SceneDelegate.swift */,
@@ -141,11 +141,11 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		14D90A342BC83CD900EAA120 /* SampleModule */ = {
+		14D90A342BC83CD900EAA120 /* SampleModuleTCA */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = SampleModule;
+			path = SampleModuleTCA;
 			sourceTree = "<group>";
 		};
 		14D90A352BC8412F00EAA120 /* MainModule */ = {
