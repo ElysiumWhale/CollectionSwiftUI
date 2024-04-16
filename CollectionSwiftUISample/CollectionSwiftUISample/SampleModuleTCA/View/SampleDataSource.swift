@@ -35,8 +35,8 @@ extension SampleViewController {
         storeProvider: @escaping (SampleItemSystem.State.ID) -> StoreOf<SampleItemSystem>?,
         actionHandler: @escaping (SampleSystem.Action) -> Void
     ) -> DataSource {
-        // Регистрация должна создавать вне самого дата сорса
-        let loaderRegistration = CellProvider.loader
+        // Регистрация должна создаваться вне самого дата сорса
+        let loaderRegistration = CellProvider.loader()
         let footerRegistration = CellProvider.footer(actionHandler)
 
         // TODO: - Add supplementary

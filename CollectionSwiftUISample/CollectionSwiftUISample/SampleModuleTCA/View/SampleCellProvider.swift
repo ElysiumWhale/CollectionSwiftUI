@@ -3,13 +3,15 @@ import SwiftUI
 
 extension SampleViewController {
     enum CellProvider {
-        static let loader = Registration { cell, index, item in
-            // SwiftUI.ProgressView работает только один раз
-            let indicator = UIActivityIndicatorView(style: .medium)
-            indicator.color = item
-            indicator.startAnimating()
-            cell.contentView.addSubview(indicator)
-            indicator.edgesToSuperview()
+        static func loader() -> Registration<UICollectionViewCell, UIColor> {
+            Registration { cell, index, item in
+                // SwiftUI.ProgressView работает только один раз
+                let indicator = UIActivityIndicatorView(style: .medium)
+                indicator.color = item
+                indicator.startAnimating()
+                cell.contentView.addSubview(indicator)
+                indicator.edgesToSuperview()
+            }
         }
 
         static func footer(
