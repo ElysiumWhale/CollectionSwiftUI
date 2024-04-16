@@ -189,12 +189,12 @@ extension SampleViewController: UICollectionViewDelegate {
 // MARK: - Layout
 extension UICollectionViewLayout {
     static func sampleLayout(
-        _ provider: @escaping (Int) -> SampleViewController.Section?
+        _ sectionProvider: @escaping (Int) -> SampleViewController.Section?
     ) -> UICollectionViewCompositionalLayout {
         UICollectionViewCompositionalLayout { index, env in
             // TODO: - Supplementary
             // section.boundarySupplementaryItems
-            switch provider(index) {
+            switch sectionProvider(index) {
             case nil, .list, .toolbar, .footer:
                 return NSCollectionLayoutSection.standart()
             case .carousel:
