@@ -1,5 +1,7 @@
 import UIKit
 
+typealias Registration<Cell: UICollectionViewCell, Item> = UICollectionView.CellRegistration<Cell, Item>
+
 extension UICollectionView {
     func dequeue(
         id: any RawRepresentable<String>,
