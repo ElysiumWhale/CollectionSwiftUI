@@ -181,10 +181,10 @@
 		14D90A342BC83CD900EAA120 /* SampleModuleTCA */ = {
 			isa = PBXGroup;
 			children = (
+				1483FAAB2BCEA4450078BC3E /* View */,
 				14D90A412BC8457F00EAA120 /* SampleModuleFactory.swift */,
 				14D90A3F2BC8457800EAA120 /* SampleSystem.swift */,
 				1483FAA92BCEA4250078BC3E /* SampleItemSystem.swift */,
-				1483FAAB2BCEA4450078BC3E /* View */,
 			);
 			path = SampleModuleTCA;
 			sourceTree = "<group>";
