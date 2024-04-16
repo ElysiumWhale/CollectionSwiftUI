@@ -108,20 +108,24 @@ final class SampleViewController: UIViewController {
 
         viewStore.publisher.scrollPath
             .compactMap { $0 }
-            .sink { [unowned self] in
-                switch $0 {
-                case .top:
-                    let index = IndexPath(row: 0, section: 0)
-                    collection.scrollToItem(at: index, at: .top, animated: true)
-                case let .item(id):
-                    if let index = dataSource.indexPath(for: .listItem(id: id)) {
-                        collection.scrollToItem(at: index, at: .top, animated: true)
-                        viewStore.send(.item(.element(id: id, action: .setCollapsed(false))))
-                    }
-                }
-                viewStore.send(.didScroll)
+            .sink { [unowned self] path in
+                scroll(to: path)
             }
             .store(in: &cancellables)
+    }
+
+    private func scroll(to path: SampleSystem.State.ScrollPath) {
+        switch path {
+        case .top:
+            let index = IndexPath(row: 0, section: 0)
+            collection.scrollToItem(at: index, at: .top, animated: true)
+        case let .item(id):
+            if let index = dataSource.indexPath(for: .listItem(id: id)) {
+                collection.scrollToItem(at: index, at: .top, animated: true)
+                viewStore.send(.item(.element(id: id, action: .setCollapsed(false))))
+            }
+        }
+        viewStore.send(.didScroll)
     }
 
     private func applyItems(_ items: IdentifiedArrayOf<SampleItemSystem.State>) {
