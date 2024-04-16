@@ -35,7 +35,14 @@ extension SampleViewController {
         storeProvider: @escaping (SampleItemSystem.State.ID) -> StoreOf<SampleItemSystem>?,
         actionHandler: @escaping (SampleSystem.Action) -> Void
     ) -> DataSource {
-        let result = DataSource(collectionView: collection) { [weak self] collection, index, item in
+        // Регистрация должна создавать вне самого дата сорса
+        let loaderRegistration = CellProvider.loader
+        let footerRegistration = CellProvider.footer(actionHandler)
+
+        // TODO: - Add supplementary
+        // result.supplementaryViewProvider = { }
+
+        return DataSource(collectionView: collection) { [weak self] collection, index, item in
             switch item {
             case let .listItem(id):
                 let cell = collection.dequeue(id: Cell.listItemCell, for: index)
@@ -68,29 +75,14 @@ extension SampleViewController {
                 }
                 return cell
             case .footer:
-                let cell = collection.dequeue(id: Cell.footerCell, for: index)
-                cell.contentConfiguration = UIHostingConfiguration {
-                    Button(
-                        action: { actionHandler(.scrollTo(.top)) },
-                        label: { Image(systemName: "arrow.up") }
-                    )
-                    .buttonStyle(.borderedProminent)
-                }
-                return cell
+                return collection.dequeue(footerRegistration, for: index, item: item)
             case .loader:
-                let cell = collection.dequeue(id: Cell.loaderCell, for: index)
-                // SwiftUI.ProgressView работает только один раз
-                let indicator = UIActivityIndicatorView(style: .medium)
-                indicator.startAnimating()
-                cell.contentView.addSubview(indicator)
-                indicator.edgesToSuperview()
-                return cell
+                return collection.dequeue(
+                    loaderRegistration,
+                    for: index,
+                    item: .systemGray
+                )
             }
         }
-
-        // TODO: - Add supplementary
-        // result.supplementaryViewProvider = { }
-
-        return result
     }
 }
