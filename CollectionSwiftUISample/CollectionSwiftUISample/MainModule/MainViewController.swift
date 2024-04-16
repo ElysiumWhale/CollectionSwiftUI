@@ -24,12 +24,9 @@ final class MainViewController: UIViewController {
 
     private func setupSubviews() {
         let hosting = UIHostingConfiguration { [weak viewStore] in
-            Button(
-                "Go to Sample",
-                action: {
-                    viewStore?.send(.showSample)
-                }
-            )
+            Button("Go to Sample") {
+                viewStore?.send(.showSample)
+            }
             .buttonStyle(.borderedProminent)
         }
 
