@@ -9,6 +9,14 @@ extension UICollectionView {
     ) -> UICollectionViewCell {
         dequeueReusableCell(withReuseIdentifier: id.rawValue, for: index)
     }
+
+    func dequeue<CellType: UICollectionViewCell, Item: Hashable>(
+        _ registration: Registration<CellType, Item>,
+        for index: IndexPath,
+        item: Item
+    ) -> UICollectionViewCell {
+        dequeueConfiguredReusableCell(using: registration, for: index, item: item)
+    }
 }
 
 extension NSCollectionLayoutSection {
