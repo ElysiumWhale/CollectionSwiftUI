@@ -18,6 +18,9 @@ final class SampleViewController: UIViewController {
         storeProvider: { [weak self] id in
             self?.store.scope(state: \.sampleItems[id:id], action: \.item[id:id])
         },
+        viewStoreProvider: {  [weak self] in
+            self?.viewStore
+        },
         actionHandler: { [weak self] in
             self?.viewStore.send($0)
         }

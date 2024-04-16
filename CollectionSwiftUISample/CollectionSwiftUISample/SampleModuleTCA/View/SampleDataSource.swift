@@ -31,6 +31,7 @@ extension SampleViewController {
     func makeDataSource(
         collection: UICollectionView,
         storeProvider: @escaping (SampleItemSystem.State.ID) -> StoreOf<SampleItemSystem>?,
+        viewStoreProvider: @escaping () -> ViewStoreOf<SampleSystem>?,
         actionHandler: @escaping (SampleSystem.Action) -> Void
     ) -> DataSource {
         // Регистрация должна создаваться вне самого дата сорса
@@ -40,7 +41,7 @@ extension SampleViewController {
         // TODO: - Add supplementary
         // result.supplementaryViewProvider = { }
 
-        return DataSource(collectionView: collection) { [weak self] collection, index, item in
+        return DataSource(collectionView: collection) { collection, index, item in
             switch item {
             case let .listItem(id, _):
                 let cell = collection.dequeue(id: Cell.listItemCell, for: index)
@@ -66,7 +67,7 @@ extension SampleViewController {
                 return cell
             case let .carouselItem(id):
                 let cell = collection.dequeue(id: Cell.carouselItemCell, for: index)
-                let binding = self?.viewStore.binding(
+                let binding = viewStoreProvider()?.binding(
                     get: { $0.selectedCarouselItems.contains(id) },
                     send: { .setActiveCarouselItem(id, $0) }
                 )
