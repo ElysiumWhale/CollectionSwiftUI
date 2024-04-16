@@ -1,10 +1,3 @@
-//
-//  CollectionSwiftUISampleUITestsLaunchTests.swift
-//  CollectionSwiftUISampleUITests
-//
-//  Created by Gurin on 11.04.24.
-//
-
 import XCTest
 
 final class CollectionSwiftUISampleUITestsLaunchTests: XCTestCase {

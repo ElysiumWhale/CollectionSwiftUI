@@ -1,10 +1,3 @@
-//
-//  SceneDelegate.swift
-//  CollectionSwiftUISample
-//
-//  Created by Gurin on 11.04.24.
-//
-
 import UIKit
 
 final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
