@@ -5,11 +5,9 @@ import ComposableArchitecture
 
 extension SampleViewController {
     enum Cell: String, CaseIterable {
-        case loaderCell
         case toolbarCell
         case listItemCell
         case carouselItemCell
-        case footerCell
     }
 
     enum Section {
@@ -36,8 +34,8 @@ extension SampleViewController {
         actionHandler: @escaping (SampleSystem.Action) -> Void
     ) -> DataSource {
         // Регистрация должна создаваться вне самого дата сорса
-        let loaderRegistration = CellProvider.loader()
-        let footerRegistration = CellProvider.footer(actionHandler)
+        let loader = CellProvider.loader()
+        let footer = CellProvider.footer(actionHandler)
 
         // TODO: - Add supplementary
         // result.supplementaryViewProvider = { }
@@ -83,13 +81,9 @@ extension SampleViewController {
                 }
                 return cell
             case .footer:
-                return collection.dequeue(footerRegistration, for: index, item: item)
+                return collection.dequeue(footer, for: index, item: item)
             case .loader:
-                return collection.dequeue(
-                    loaderRegistration,
-                    for: index,
-                    item: .systemGray
-                )
+                return collection.dequeue(loader, for: index, item: .systemGray)
             }
         }
     }
