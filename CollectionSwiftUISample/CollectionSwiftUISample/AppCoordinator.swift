@@ -31,11 +31,19 @@ final class AppCoordinator {
         let module = MainModuleFactory.make()
 
         module.output
-            .sink { _ in
-
+            .sink { [unowned self] in
+                switch $0 {
+                case .showSample:
+                    let module = makeSampleModule()
+                    router.pushViewController(module, animated: true)
+                }
             }
             .store(in: &cancellables)
 
         return module.ui
+    }
+
+    private func makeSampleModule() -> UIViewController {
+        SampleModuleFactory.make()
     }
 }
