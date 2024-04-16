@@ -28,7 +28,7 @@ extension SampleViewController {
     typealias DataSource = UICollectionViewDiffableDataSource<Section, Item>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Item>
 
-    func makeDataSource(
+    static func makeDataSource(
         collection: UICollectionView,
         storeProvider: @escaping (SampleItemSystem.State.ID) -> StoreOf<SampleItemSystem>?,
         viewStoreProvider: @escaping () -> ViewStoreOf<SampleSystem>?,

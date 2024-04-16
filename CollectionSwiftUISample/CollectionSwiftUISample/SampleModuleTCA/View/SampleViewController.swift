@@ -13,7 +13,7 @@ final class SampleViewController: UIViewController {
 
     private var cancellables = Set<AnyCancellable>()
 
-    private lazy var dataSource = makeDataSource(
+    private lazy var dataSource = Self.makeDataSource(
         collection: collection,
         storeProvider: { [weak self] id in
             self?.store.scope(state: \.sampleItems[id:id], action: \.item[id:id])
