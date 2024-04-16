@@ -54,6 +54,7 @@ final class SampleViewController: UIViewController {
         view.addSubview(collection)
         collection.edgesToSuperview()
 
+        collection.delegate = self
         collection.collectionViewLayout = .sampleLayout { [weak self] in
             self?.dataSource.sectionIdentifier(for: $0)
         }
@@ -65,6 +66,17 @@ final class SampleViewController: UIViewController {
         snapshot.appendItems([.toolbar], toSection: .toolbar)
         snapshot.appendItems([.footer], toSection: .footer)
         dataSource.apply(snapshot)
+
+        var sectionSnapshot = dataSource.snapshot(for: .toolbar)
+        sectionSnapshot.append(
+            [
+                .carouselItem(id: 99),
+                .listItem(id: 10, salt: 1),
+                .carouselItem(id: 98)
+            ],
+            to: .toolbar
+        )
+        dataSource.apply(sectionSnapshot, to: .toolbar)
     }
 
     private func setupAppearance() {
@@ -152,6 +164,26 @@ final class SampleViewController: UIViewController {
     }
 }
 
+// MARK: - UICollectionViewDelegate
+extension SampleViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard dataSource.sectionIdentifier(for: indexPath.section) == .toolbar else {
+            return
+        }
+        var sectionSnapshot = dataSource.snapshot(for: .toolbar)
+        guard let root = sectionSnapshot.rootItems.first else {
+            return
+        }
+        if sectionSnapshot.isExpanded(root) {
+            sectionSnapshot.collapse([.toolbar])
+        } else {
+            sectionSnapshot.expand([.toolbar])
+        }
+        dataSource.apply(sectionSnapshot, to: .toolbar)
+    }
+}
+
+// MARK: - Layout
 extension UICollectionViewLayout {
     static func sampleLayout(
         _ provider: @escaping (Int) -> SampleViewController.Section?
