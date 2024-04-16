@@ -57,6 +57,14 @@ extension SampleViewController {
                 cell.contentConfiguration = UIHostingConfiguration {
                     ToolbarView(actionHandler: actionHandler)
                 }
+                .background {
+                    HStack {
+                        Text("Tap here")
+                        Spacer()
+                        Text("Tap here")
+                    }
+                    .padding(.horizontal, 16)
+                }
                 return cell
             case let .carouselItem(id):
                 let cell = collection.dequeue(id: Cell.carouselItemCell, for: index)
