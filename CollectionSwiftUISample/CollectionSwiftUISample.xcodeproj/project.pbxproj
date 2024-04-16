@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		145EA6602BCD5329008D4812 /* UICollectionView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145EA65F2BCD5329008D4812 /* UICollectionView+.swift */; };
+		1483FAAA2BCEA4250078BC3E /* SampleItemSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1483FAA92BCEA4250078BC3E /* SampleItemSystem.swift */; };
 		14D909FE2BC82F1B00EAA120 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D909FD2BC82F1B00EAA120 /* AppDelegate.swift */; };
 		14D90A002BC82F1B00EAA120 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D909FF2BC82F1B00EAA120 /* SceneDelegate.swift */; };
 		14D90A022BC82F1B00EAA120 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D90A012BC82F1B00EAA120 /* MainViewController.swift */; };
@@ -20,6 +21,7 @@
 		14D90A372BC8414500EAA120 /* MainSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D90A362BC8414500EAA120 /* MainSystem.swift */; };
 		14D90A392BC8424B00EAA120 /* MainModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D90A382BC8424B00EAA120 /* MainModuleFactory.swift */; };
 		14D90A3C2BC843E600EAA120 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D90A3B2BC843E600EAA120 /* AppCoordinator.swift */; };
+		14D90A402BC8457800EAA120 /* SampleSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D90A3F2BC8457800EAA120 /* SampleSystem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		145EA65F2BCD5329008D4812 /* UICollectionView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+.swift"; sourceTree = "<group>"; };
+		1483FAA92BCEA4250078BC3E /* SampleItemSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleItemSystem.swift; sourceTree = "<group>"; };
 		14D909FA2BC82F1B00EAA120 /* CollectionSwiftUISample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollectionSwiftUISample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14D909FD2BC82F1B00EAA120 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		14D909FF2BC82F1B00EAA120 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +58,7 @@
 		14D90A362BC8414500EAA120 /* MainSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSystem.swift; sourceTree = "<group>"; };
 		14D90A382BC8424B00EAA120 /* MainModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModuleFactory.swift; sourceTree = "<group>"; };
 		14D90A3B2BC843E600EAA120 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		14D90A3F2BC8457800EAA120 /* SampleSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleSystem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +159,8 @@
 		14D90A342BC83CD900EAA120 /* SampleModuleTCA */ = {
 			isa = PBXGroup;
 			children = (
+				14D90A3F2BC8457800EAA120 /* SampleSystem.swift */,
+				1483FAA92BCEA4250078BC3E /* SampleItemSystem.swift */,
 			);
 			path = SampleModuleTCA;
 			sourceTree = "<group>";
@@ -310,6 +316,8 @@
 				14D90A022BC82F1B00EAA120 /* MainViewController.swift in Sources */,
 				14D90A372BC8414500EAA120 /* MainSystem.swift in Sources */,
 				14D909FE2BC82F1B00EAA120 /* AppDelegate.swift in Sources */,
+				1483FAAA2BCEA4250078BC3E /* SampleItemSystem.swift in Sources */,
+				14D90A402BC8457800EAA120 /* SampleSystem.swift in Sources */,
 				14D90A002BC82F1B00EAA120 /* SceneDelegate.swift in Sources */,
 				14D90A392BC8424B00EAA120 /* MainModuleFactory.swift in Sources */,
 				145EA6602BCD5329008D4812 /* UICollectionView+.swift in Sources */,
