@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		145EA6602BCD5329008D4812 /* UICollectionView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145EA65F2BCD5329008D4812 /* UICollectionView+.swift */; };
 		14D909FE2BC82F1B00EAA120 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D909FD2BC82F1B00EAA120 /* AppDelegate.swift */; };
 		14D90A002BC82F1B00EAA120 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D909FF2BC82F1B00EAA120 /* SceneDelegate.swift */; };
 		14D90A022BC82F1B00EAA120 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D90A012BC82F1B00EAA120 /* MainViewController.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		145EA65F2BCD5329008D4812 /* UICollectionView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+.swift"; sourceTree = "<group>"; };
 		14D909FA2BC82F1B00EAA120 /* CollectionSwiftUISample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollectionSwiftUISample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14D909FD2BC82F1B00EAA120 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		14D909FF2BC82F1B00EAA120 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +84,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		145EA65E2BCD531C008D4812 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				145EA65F2BCD5329008D4812 /* UICollectionView+.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		14D909F12BC82F1A00EAA120 = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +115,7 @@
 		14D909FC2BC82F1B00EAA120 /* CollectionSwiftUISample */ = {
 			isa = PBXGroup;
 			children = (
+				145EA65E2BCD531C008D4812 /* Helpers */,
 				14D90A352BC8412F00EAA120 /* MainModule */,
 				14D90A342BC83CD900EAA120 /* SampleModuleTCA */,
 				14D90A3B2BC843E600EAA120 /* AppCoordinator.swift */,
@@ -301,6 +312,7 @@
 				14D909FE2BC82F1B00EAA120 /* AppDelegate.swift in Sources */,
 				14D90A002BC82F1B00EAA120 /* SceneDelegate.swift in Sources */,
 				14D90A392BC8424B00EAA120 /* MainModuleFactory.swift in Sources */,
+				145EA6602BCD5329008D4812 /* UICollectionView+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
