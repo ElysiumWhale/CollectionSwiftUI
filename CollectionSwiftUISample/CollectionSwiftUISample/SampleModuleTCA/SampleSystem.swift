@@ -12,8 +12,11 @@ struct SampleSystem: Reducer {
         var isLoading = false
         var scrollPath: ScrollPath?
 
+        /// Элементы для демонстрации ячеек с ТСА системой внутри
         var sampleItems: IdentifiedArrayOf<SampleItemSystem.State> = []
 
+        /// Элементы для демонстрации ячеек без отдельной ТСА системы
+        /// с использованием Binding для синхронизации состояния
         var carouselItems: [Int] = []
         var selectedCarouselItems: Set<Int> = []
     }
@@ -56,6 +59,7 @@ struct SampleSystem: Reducer {
             state.isLoading = true
             state.sampleItems.removeAll()
             return .run {
+                // Имитация загрузки
                 try? await Task.sleep(nanoseconds: 1_000_000_000)
                 return await $0(.loadedItems(Array(0...19)))
             }
@@ -71,6 +75,7 @@ struct SampleSystem: Reducer {
             // не затираем activatedCarouselItems,
             // чтобы продемонстрировать восстановление состояния по id
             return .run {
+                // Имитация загрузки
                 try? await Task.sleep(nanoseconds: 1_000_000_000)
                 return await $0(.loadedCarousel(Array(0...19)))
             }

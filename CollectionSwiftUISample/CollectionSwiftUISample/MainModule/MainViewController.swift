@@ -23,6 +23,8 @@ final class MainViewController: UIViewController {
     }
 
     private func setupSubviews() {
+        // MARK: Использование UIHostingConfiguration в качестве UIView
+        // для встраивания в UIKit иерархию
         let hosting = UIHostingConfiguration { [weak viewStore] in
             Button("Go to Sample") {
                 viewStore?.send(.showSample)

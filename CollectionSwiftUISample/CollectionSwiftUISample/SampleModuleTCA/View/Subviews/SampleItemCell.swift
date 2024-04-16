@@ -1,6 +1,7 @@
 import SwiftUI
 import ComposableArchitecture
 
+/// Ячейка с изменяющейся высотой в завимости от состония
 struct SampleItemCell: View {
     @ObservedObject
     private var viewStore: ViewStoreOf<SampleItemSystem>

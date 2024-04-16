@@ -2,7 +2,10 @@ import UIKit
 import SwiftUI
 
 extension SampleViewController {
+    /// Фабрика регистраций ячеек
     enum CellProvider {
+        /// Пример регистрации ячейки с параметром конфигурации,
+        /// отличным от элемента источника данных (`UIColor` вместо `Item`)
         static func loader() -> Registration<UICollectionViewCell, UIColor> {
             Registration { cell, index, item in
                 // SwiftUI.ProgressView работает только один раз
@@ -14,6 +17,8 @@ extension SampleViewController {
             }
         }
 
+        /// Пример регистрации ячейки с параметром конфигурации,
+        /// совпадающим с элементом источника данных
         static func footer(
             _ handler: @escaping (SampleSystem.Action) -> Void
         ) -> Registration<UICollectionViewCell, Item> {

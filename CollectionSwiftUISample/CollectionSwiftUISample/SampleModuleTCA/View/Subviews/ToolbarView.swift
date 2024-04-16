@@ -1,5 +1,6 @@
 import SwiftUI
 
+/// Панель с вспомогательными кнопками для управления состоянием
 struct ToolbarView: View {
     let actionHandler: (SampleSystem.Action) -> Void
 

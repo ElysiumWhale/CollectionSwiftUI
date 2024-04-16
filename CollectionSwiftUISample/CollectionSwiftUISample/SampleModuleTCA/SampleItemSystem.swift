@@ -1,5 +1,6 @@
 import ComposableArchitecture
 
+/// Вспомогательная система для управления состоянием элемента коллекции
 struct SampleItemSystem: Reducer {
     struct State: Identifiable, Equatable {
         let id: Int

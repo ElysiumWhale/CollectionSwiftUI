@@ -20,6 +20,7 @@ import SwiftUI
 
 @available(iOS 17, *)
 #Preview {
+    // MARK: Удобный предпросмотр сразу целого модуля
     SampleModuleFactory.make()
 }
 #endif

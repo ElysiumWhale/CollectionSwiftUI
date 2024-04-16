@@ -1,5 +1,6 @@
 import SwiftUI
 
+/// Ячейка с изменяющейся высотой в завимости от состония
 struct CarouselItemCell: View {
     enum Event {
         case press

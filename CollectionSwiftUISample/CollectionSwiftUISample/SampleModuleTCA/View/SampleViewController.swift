@@ -2,6 +2,7 @@ import UIKit
 import ComposableArchitecture
 import Combine
 
+/// Экран для демонстрации интеграции UICollectioniew со SwiftUI ячейками
 final class SampleViewController: UIViewController {
     private let collection = UICollectionView(
         frame: .zero,
@@ -70,6 +71,9 @@ final class SampleViewController: UIViewController {
         snapshot.appendItems([.footer], toSection: .footer)
         dataSource.apply(snapshot)
 
+        // MARK: Добавление дочерних элементов в элемент секции
+        // для демонстрации нативной поддержки древовидных секций
+        // с возможностью скрытия/раскрытия
         var sectionSnapshot = dataSource.snapshot(for: .toolbar)
         sectionSnapshot.append(
             [
@@ -106,6 +110,7 @@ final class SampleViewController: UIViewController {
             }
             .store(in: &cancellables)
 
+        // MARK: Настройка прокрутки к нужному элементу
         viewStore.publisher.scrollPath
             .compactMap { $0 }
             .sink { [unowned self] path in
@@ -114,6 +119,7 @@ final class SampleViewController: UIViewController {
             .store(in: &cancellables)
     }
 
+    /// Обработка события прокрутки к элементу
     private func scroll(to path: SampleSystem.State.ScrollPath) {
         switch path {
         case .top:
@@ -128,6 +134,7 @@ final class SampleViewController: UIViewController {
         viewStore.send(.didScroll)
     }
 
+    /// Обработка элементов для секции элементов списка `Section.list`
     private func applyItems(_ items: IdentifiedArrayOf<SampleItemSystem.State>) {
         var snapshot = dataSource.snapshot()
         if !snapshot.sectionIdentifiers.contains(.list) {
@@ -141,6 +148,7 @@ final class SampleViewController: UIViewController {
         dataSource.apply(snapshot)
     }
 
+    /// Обработка элементов для секции элементов карусели `Section.carousel`
     private func applyCarousel(_ items: [Int]) {
         var snapshot = dataSource.snapshot()
         if !snapshot.sectionIdentifiers.contains(.carousel) {
@@ -154,6 +162,7 @@ final class SampleViewController: UIViewController {
         dataSource.apply(snapshot)
     }
 
+    /// Обработка состояния загрузки (добавление/удаление индикатора)
     private func applyLoader(isLoading: Bool) {
         var snapshot = dataSource.snapshot()
         let loaderExists = snapshot.itemIdentifiers.contains(.loader)
@@ -177,6 +186,7 @@ extension SampleViewController: UICollectionViewDelegate {
         guard dataSource.sectionIdentifier(for: indexPath.section) == .toolbar else {
             return
         }
+        // MARK: Использование нативного скрытия/раскрытия секций
         var sectionSnapshot = dataSource.snapshot(for: .toolbar)
         guard let root = sectionSnapshot.rootItems.first else {
             return
@@ -207,6 +217,7 @@ extension UICollectionViewLayout {
                     width: .estimated(100),
                     isHorizontalGroup: false
                 )
+                // MARK: Создание секции с горизонтальной прокруткой
                 section.orthogonalScrollingBehavior = .continuous
                 return section
             }
