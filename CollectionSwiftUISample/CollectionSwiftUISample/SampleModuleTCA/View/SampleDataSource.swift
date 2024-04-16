@@ -22,7 +22,7 @@ extension SampleViewController {
     enum Item: Hashable {
         case loader
         case toolbar
-        case listItem(id: Int)
+        case listItem(id: Int, salt: Int = 0)
         case carouselItem(id: Int)
         case footer
     }
@@ -44,7 +44,7 @@ extension SampleViewController {
 
         return DataSource(collectionView: collection) { [weak self] collection, index, item in
             switch item {
-            case let .listItem(id):
+            case let .listItem(id, _):
                 let cell = collection.dequeue(id: Cell.listItemCell, for: index)
                 cell.contentConfiguration = UIHostingConfiguration {
                     if let store = storeProvider(id) {
