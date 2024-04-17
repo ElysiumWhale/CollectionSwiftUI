@@ -13,7 +13,7 @@ extension SampleViewController {
                 indicator.color = item
                 indicator.startAnimating()
                 cell.contentView.addSubview(indicator)
-                indicator.edgesToSuperview()
+                indicator.edgesToSuperview(insets: .uniform(8))
             }
         }
 
