@@ -151,14 +151,21 @@ final class SampleViewController: UIViewController {
     /// Обработка элементов для секции элементов карусели `Section.carousel`
     private func applyCarousel(_ items: [Int]) {
         var snapshot = dataSource.snapshot()
+
         if !snapshot.sectionIdentifiers.contains(.carousel) {
             snapshot.insertSections([.carousel], beforeSection: .list)
         }
+
         snapshot.deleteItems(snapshot.itemIdentifiers(inSection: .carousel))
-        snapshot.appendItems(
-            items.map { Item.carouselItem(id: $0) },
-            toSection: .carousel
-        )
+        if items.isEmpty {
+            snapshot.deleteSections([.carousel])
+        } else {
+            snapshot.deleteItems(snapshot.itemIdentifiers(inSection: .carousel))
+            snapshot.appendItems(
+                items.map { Item.carouselItem(id: $0) },
+                toSection: .carousel
+            )
+        }
         dataSource.apply(snapshot)
     }
 
