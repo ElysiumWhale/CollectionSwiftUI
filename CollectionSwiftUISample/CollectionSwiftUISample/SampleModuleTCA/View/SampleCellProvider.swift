@@ -6,8 +6,8 @@ extension SampleViewController {
     enum CellProvider {
         /// Пример регистрации ячейки с параметром конфигурации,
         /// отличным от элемента источника данных (`UIColor` вместо `Item`)
-        static func loader() -> Registration<UICollectionViewCell, UIColor> {
-            Registration { cell, index, item in
+        static func loader() -> CellRegistration<UICollectionViewCell, UIColor> {
+            CellRegistration { cell, index, item in
                 // SwiftUI.ProgressView работает только один раз
                 let indicator = UIActivityIndicatorView(style: .medium)
                 indicator.color = item
@@ -21,8 +21,8 @@ extension SampleViewController {
         /// совпадающим с элементом источника данных
         static func footer(
             _ handler: @escaping (SampleSystem.Action) -> Void
-        ) -> Registration<UICollectionViewCell, Item> {
-            Registration { cell, _, _ in
+        ) -> CellRegistration<UICollectionViewCell, Item> {
+            CellRegistration { cell, _, _ in
                 cell.contentConfiguration = UIHostingConfiguration {
                     Button(
                         action: { handler(.scrollTo(.top)) },

@@ -1,6 +1,7 @@
 import UIKit
 
-typealias Registration<Cell: UICollectionViewCell, Item> = UICollectionView.CellRegistration<Cell, Item>
+typealias CellRegistration = UICollectionView.CellRegistration
+typealias SuppRegistration = UICollectionView.SupplementaryRegistration
 
 extension UICollectionView {
     func dequeue(
@@ -11,7 +12,7 @@ extension UICollectionView {
     }
 
     func dequeue<CellType: UICollectionViewCell, Item: Hashable>(
-        _ registration: Registration<CellType, Item>,
+        _ registration: CellRegistration<CellType, Item>,
         for index: IndexPath,
         item: Item
     ) -> UICollectionViewCell {
