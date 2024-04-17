@@ -53,6 +53,10 @@ extension SampleViewController {
                 cell.contentConfiguration = UIHostingConfiguration {
                     if let store = storeProvider(id) {
                         SampleItemCell(store: store)
+                    } else {
+                        Button("No model for this Id", action: { })
+                            .buttonStyle(.borderedProminent)
+                            .tint(.yellow)
                     }
                 }
                 return cell
