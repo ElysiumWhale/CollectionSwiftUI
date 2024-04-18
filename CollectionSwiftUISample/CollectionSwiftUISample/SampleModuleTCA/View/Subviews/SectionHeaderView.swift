@@ -1,4 +1,5 @@
 import UIKit
+import SwiftUI
 
 final class SectionHeaderView: UICollectionReusableView {
     private let label = UILabel()
@@ -18,11 +19,20 @@ final class SectionHeaderView: UICollectionReusableView {
 
     private func setupSubviews() {
         addSubview(label)
-        label.edgesToSuperview(insets: .uniform(8))
+        label.edgesToSuperview(excluding: .trailing, insets: .uniform(8))
+        let hosting = UIHostingConfiguration {
+            Image(systemName: "gear")
+                .foregroundStyle(.white)
+        }
+        let hostingView = hosting.makeContentView()
+        addSubview(hostingView)
+        hostingView.edgesToSuperview(excluding: .leading, insets: .uniform(8))
+        hostingView.leadingToTrailing(of: label)
     }
 
     private func setupAppearence() {
         label.font = .boldSystemFont(ofSize: 22)
+        label.textColor = .white
         backgroundColor = .systemIndigo
         label.backgroundColor = backgroundColor
     }
