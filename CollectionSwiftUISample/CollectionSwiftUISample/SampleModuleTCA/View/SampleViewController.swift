@@ -9,6 +9,7 @@ final class SampleViewController: UIViewController {
         collectionViewLayout: UICollectionViewLayout()
     )
     private let store: StoreOf<SampleSystem>
+    private let itemForSync = Item.listItem(id: 10, salt: 1)
 
     let viewStore: ViewStoreOf<SampleSystem>
 
@@ -77,7 +78,7 @@ final class SampleViewController: UIViewController {
         sectionSnapshot.append(
             [
                 .carouselItem(id: 99),
-                .listItem(id: 10, salt: 1),
+                itemForSync,
                 .carouselItem(id: 98)
             ],
             to: .toolbar
@@ -148,6 +149,9 @@ final class SampleViewController: UIViewController {
                 toSection: .list
             )
             snapshot.appendItems([.footer], toSection: .list)
+        }
+        if snapshot.itemIdentifiers.contains(itemForSync) {
+            snapshot.reconfigureItems([itemForSync])
         }
         dataSource.apply(snapshot)
     }
