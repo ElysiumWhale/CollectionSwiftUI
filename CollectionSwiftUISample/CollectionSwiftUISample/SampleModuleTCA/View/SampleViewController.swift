@@ -140,10 +140,15 @@ final class SampleViewController: UIViewController {
             snapshot.appendSections([.list])
         }
         snapshot.deleteItems(snapshot.itemIdentifiers(inSection: .list))
-        snapshot.appendItems(
-            items.map { Item.listItem(id: $0.id) },
-            toSection: .list
-        )
+        if items.isEmpty {
+            snapshot.deleteSections([.list])
+        } else {
+            snapshot.appendItems(
+                items.map { Item.listItem(id: $0.id) },
+                toSection: .list
+            )
+            snapshot.appendItems([.footer], toSection: .list)
+        }
         dataSource.apply(snapshot)
     }
 
