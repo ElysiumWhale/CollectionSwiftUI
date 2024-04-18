@@ -11,7 +11,7 @@ extension SampleViewController {
         case carouselItemCell
     }
 
-    enum Section {
+    enum Section: String {
         case toolbar
         case carousel
         case list
@@ -41,10 +41,7 @@ extension SampleViewController {
         let loader = CellProvider.loader()
         let footer = CellProvider.footer(actionHandler)
 
-        // TODO: - Add supplementary
-        // result.supplementaryViewProvider = { }
-
-        return DataSource(collectionView: collection) { collection, index, item in
+        let source = DataSource(collectionView: collection) { collection, index, item in
             switch item {
             case let .listItem(id, _):
                 let cell = collection.dequeue(id: Cell.listItemCell, for: index)
@@ -103,5 +100,17 @@ extension SampleViewController {
                 return collection.dequeue(loader, for: index, item: .systemGray)
             }
         }
+
+        // Регистрация должна создаваться вне самого дата сорса
+        let header = SupplementaryProvider.header { [weak source] index in
+            source?.sectionIdentifier(for: index.section)
+        }
+
+        // MARK: Использование UICollectionView.SupplementaryRegistration
+        source.supplementaryViewProvider = { collection, kind, index in
+            collection.dequeue(header, for: index)
+        }
+
+        return source
     }
 }

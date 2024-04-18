@@ -221,11 +221,9 @@ extension UICollectionViewLayout {
         _ sectionProvider: @escaping (Int) -> SampleViewController.Section?
     ) -> UICollectionViewCompositionalLayout {
         UICollectionViewCompositionalLayout { index, env in
-            // TODO: - Supplementary
-            // section.boundarySupplementaryItems
             switch sectionProvider(index) {
             case nil, .list, .toolbar:
-                return .standart()
+                return .standart().withHeader()
             case .carousel:
                 let section = NSCollectionLayoutSection.standart(
                     height: .estimated(50),
@@ -234,7 +232,7 @@ extension UICollectionViewLayout {
                 )
                 // MARK: Создание секции с горизонтальной прокруткой
                 section.orthogonalScrollingBehavior = .continuous
-                return section
+                return section.withHeader()
             }
         }
     }
