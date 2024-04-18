@@ -48,4 +48,18 @@ extension NSCollectionLayoutSection {
         let section = NSCollectionLayoutSection(group: group)
         return section
     }
+
+    func withHeader() -> Self {
+        let item = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: NSCollectionLayoutSize(
+                widthDimension: .fractionalWidth(1),
+                heightDimension: .estimated(20)
+            ),
+            elementKind: SectionHeaderView.kind,
+            alignment: .topLeading
+        )
+        item.pinToVisibleBounds = true
+        boundarySupplementaryItems = [item]
+        return self
+    }
 }
