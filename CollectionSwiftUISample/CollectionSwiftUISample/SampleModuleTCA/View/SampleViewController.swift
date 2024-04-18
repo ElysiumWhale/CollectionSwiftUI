@@ -153,7 +153,7 @@ final class SampleViewController: UIViewController {
         var snapshot = dataSource.snapshot()
 
         if !snapshot.sectionIdentifiers.contains(.carousel) {
-            snapshot.insertSections([.carousel], beforeSection: .list)
+            snapshot.insertSections([.carousel], afterSection: .toolbar)
         }
 
         snapshot.deleteItems(snapshot.itemIdentifiers(inSection: .carousel))
