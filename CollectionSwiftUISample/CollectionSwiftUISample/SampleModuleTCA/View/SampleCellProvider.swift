@@ -33,4 +33,18 @@ extension SampleViewController {
             }
         }
     }
+
+    enum SupplementaryProvider {
+        static func header(
+            _ sectionProvider: @escaping (IndexPath) -> Section?
+        ) -> SuppRegistration<SectionHeaderView> {
+            SuppRegistration(elementKind: SectionHeaderView.kind) { view, kind, index in
+                guard let section = sectionProvider(index) else {
+                    return
+                }
+
+                view.render(viewState: section.rawValue)
+            }
+        }
+    }
 }
