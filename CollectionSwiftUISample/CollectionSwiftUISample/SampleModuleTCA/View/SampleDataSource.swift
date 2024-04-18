@@ -15,7 +15,6 @@ extension SampleViewController {
         case toolbar
         case carousel
         case list
-        case footer
     }
 
     enum Item: Hashable {

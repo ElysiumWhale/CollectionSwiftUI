@@ -66,9 +66,8 @@ final class SampleViewController: UIViewController {
 
     private func setupToolbarAndFooter() {
         var snapshot = Snapshot()
-        snapshot.appendSections([.toolbar, .footer])
+        snapshot.appendSections([.toolbar])
         snapshot.appendItems([.toolbar], toSection: .toolbar)
-        snapshot.appendItems([.footer], toSection: .footer)
         dataSource.apply(snapshot)
 
         // MARK: Добавление дочерних элементов в элемент секции
@@ -138,7 +137,7 @@ final class SampleViewController: UIViewController {
     private func applyItems(_ items: IdentifiedArrayOf<SampleItemSystem.State>) {
         var snapshot = dataSource.snapshot()
         if !snapshot.sectionIdentifiers.contains(.list) {
-            snapshot.insertSections([.list], beforeSection: .footer)
+            snapshot.appendSections([.list])
         }
         snapshot.deleteItems(snapshot.itemIdentifiers(inSection: .list))
         snapshot.appendItems(
@@ -216,8 +215,8 @@ extension UICollectionViewLayout {
             // TODO: - Supplementary
             // section.boundarySupplementaryItems
             switch sectionProvider(index) {
-            case nil, .list, .toolbar, .footer:
-                return NSCollectionLayoutSection.standart()
+            case nil, .list, .toolbar:
+                return .standart()
             case .carousel:
                 let section = NSCollectionLayoutSection.standart(
                     height: .estimated(50),
